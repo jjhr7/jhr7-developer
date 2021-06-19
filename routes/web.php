@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\projectController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -12,35 +15,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+/*Para versiones de Laravel inferiores a la 8 - se asigna un controlador a una ruta de esta forma y hya que descomentar la linea 31 del archivo Providers/RouteServiceProvider.php
+ * Route::get('proyectos', "projectController@Index" );*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', HomeController::class);
 
-Route::get('proyectos', function (){
-    return "Proyectos";
-});
+Route::get('proyectos', [projectController::class, "Index"] );
 
-
-Route::get('proyectos/create', function (){
-    return "Aquí se crean un proyecto";
-});
+Route::get('proyectos/create', [projectController::class, "Create"]);
 
 
+Route::get('proyectos/{proyecto}',[projectController::class, "Show"] );
 
 
-/*Route::get('proyectos/{proyecto}', function ($project){
-    return "Proyecto: $project";
-});*/
-
-Route::get('proyectos/{proyectoName}/{categoria?}', function ($proyectoName, $categoria = null){
-
-    if($categoria == null){
-        return "Proyecto: $proyectoName";
-    }else{
-        return "Bienvenido al proyecto $proyectoName, de la cateogria: $categoria";
-    }
-
-});
 
 
