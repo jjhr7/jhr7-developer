@@ -7,14 +7,14 @@ use Illuminate\Http\Request;
 class projectController extends Controller
 {
     public function Index(){
-        return "Proyectos";
+        return view("projects.index");
     }
 
     public function Create(){
-        return "Aquí se crean un proyecto";
+        return view("projects.create");
     }
 
     public function Show($project){
-        return "Proyecto: $project";
+        return view("projects.show", compact('project'));
     }
 }
