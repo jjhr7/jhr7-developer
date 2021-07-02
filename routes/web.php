@@ -20,12 +20,12 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', HomeController::class);
 
-Route::get('proyectos', [projectController::class, "Index"] );
+Route::get('proyectos', [projectController::class, "Index"] )->name('proyectos.index');
 
-Route::get('proyectos/create', [projectController::class, "Create"]);
+Route::get('proyectos/create', [projectController::class, "Create"])->name('proyectos.create');
 
 
-Route::get('proyectos/{proyecto}',[projectController::class, "Show"] );
+Route::get('proyectos/{id}',[projectController::class, "Show"])->name('proyectos.show');
 
 
 
